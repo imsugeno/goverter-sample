@@ -1,11 +1,14 @@
 module github.com/imsugeno/query-generator-sample
 
-go 1.24.1
+go 1.26.1
+
+tool (
+	github.com/jmattheis/goverter/cmd/goverter
+	github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen
+)
 
 require (
 	github.com/go-chi/chi/v5 v5.2.5
-	github.com/jmattheis/goverter v1.9.4
-	github.com/oapi-codegen/oapi-codegen/v2 v2.6.0
 	github.com/oapi-codegen/runtime v1.3.0
 )
 
@@ -17,9 +20,11 @@ require (
 	github.com/go-openapi/jsonpointer v0.21.0 // indirect
 	github.com/go-openapi/swag v0.23.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
+	github.com/jmattheis/goverter v1.9.4 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826 // indirect
+	github.com/oapi-codegen/oapi-codegen/v2 v2.6.0 // indirect
 	github.com/oasdiff/yaml v0.0.0-20250309154309-f31be36b4037 // indirect
 	github.com/oasdiff/yaml3 v0.0.0-20250309153720-d2182401db90 // indirect
 	github.com/perimeterx/marshmallow v1.1.5 // indirect
