@@ -1,0 +1,76 @@
+openapi: "3.0.3"
+info:
+  title: Task Management API
+  version: "1.0.0"
+paths:
+  /tasks:
+    get:
+      operationId: listTasks
+      summary: タスク一覧を取得
+      parameters:
+        - name: status
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/TaskStatus"
+      responses:
+        "200":
+          description: タスク一覧
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListTasksResponse"
+  /tasks/{taskId}:
+    get:
+      operationId: getTask
+      summary: タスク詳細を取得
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: タスク詳細
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+        "404":
+          description: タスクが見つからない
+components:
+  schemas:
+    TaskStatus:
+      type: string
+      enum:
+        - todo
+        - in_progress
+        - done
+    Task:
+      type: object
+      required:
+        - id
+        - title
+        - status
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        status:
+          $ref: "#/components/schemas/TaskStatus"
+        createdAt:
+          type: string
+          format: date-time
+    ListTasksResponse:
+      type: object
+      required:
+        - tasks
+      properties:
+        tasks:
+          type: array
+          items:
+            $ref: "#/components/schemas/Task"
